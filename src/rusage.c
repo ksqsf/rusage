@@ -1,6 +1,8 @@
+#include <stdint.h>
+
 struct disk_info_t {
-     unsigned long long read_bytes;
-     unsigned long long write_bytes;
+     uint64_t read_bytes;
+     uint64_t write_bytes;
 };
 
 #if defined(__linux__)
@@ -59,7 +61,7 @@ int proc_disk_info(struct disk_info_t *buf)
      } while (nbytes < size);
 
      // Extract information from buffer
-     unsigned long long rchar, wchar, syscr, syscw, read_bytes, write_bytes, cancelled_write_bytes;
+     uint64_t rchar, wchar, syscr, syscw, read_bytes, write_bytes, cancelled_write_bytes;
      sscanf("rchar: %llu\nwchar: %llu\nsyscr: %llu\nsyscw: %llu\nread_bytes: %llu\nwrite_bytes: %llu\ncancelled_write_bytes: %llu\n", &rchar, &wchar, &syscr, &syscw, &read_bytes, &write_bytes, &cancelled_write_bytes);
      buf->read_bytes = read_bytes;
      buf->write_bytes = write_bytes;
