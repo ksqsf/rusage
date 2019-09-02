@@ -5,10 +5,10 @@ use std::mem::MaybeUninit;
 #[repr(C)]
 pub struct DiskInfo {
     /// Number of bytes that are actually read from disk.
-    read_bytes: u64,
+    pub read_bytes: u64,
 
     /// Number of bytes that are actually written to disk.
-    write_bytes: u64,
+    pub write_bytes: u64,
 }
 
 pub fn proc_disk_info() -> Result<DiskInfo> {
