@@ -43,6 +43,7 @@ int proc_disk_info(struct disk_info_t *diskbuf)
      sscanf(buf, "rchar: %llu\nwchar: %llu\nsyscr: %llu\nsyscw: %llu\nread_bytes: %llu\nwrite_bytes: %llu\ncancelled_write_bytes: %llu\n", &rchar, &wchar, &syscr, &syscw, &read_bytes, &write_bytes, &cancelled_write_bytes);
      diskbuf->read_bytes = read_bytes;
      diskbuf->write_bytes = write_bytes;
+     ret = 0;
 
 finish:
      close(fd);
